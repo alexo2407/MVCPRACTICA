@@ -23,10 +23,8 @@ include "views/includes/content-wrapper.php";
       
       //creamos el controlador para crear articulos
 
-      $editarArticulo = new ArticulosControllers();
-      $respuesta = $editarArticulo->editarArticulosControllers();
-      $actualuzarArticulo = new ArticulosControllers();
-      $actualuzarArticulo->actualizarArticulosControllers();
+      $crearArticulo = new ArticulosControllers();
+      $crearArticulo->crearArticulosControllers();
       
       ?>
     </div>
@@ -43,17 +41,13 @@ include "views/includes/content-wrapper.php";
       <div class="row">
         <div class="col-8">
           <div class="card card-outline card-info">
-              
-
-            <input type="hidden" name="idArticulo" value="<?php echo isset($respuesta->idArticulo) ? $respuesta->idArticulo : ""; ?>">
             <div class="form-group px-2">
               <label for="tituloArticulo">Titulo de la publicación:</label>
-              <input type="text" class="form-control" name="tituloArticulo" value="<?php echo isset($respuesta->titulo) ? $respuesta->titulo : ""; ?>" required>
+              <input type="text" class="form-control" name="tituloArticulo" placeholder="Ingrese el titulo" required>
             </div>
             <div class="form-group px-2">
               <label for="contenidoArticulo">Contenido de la publicación:</label> <br>
-              <textarea id="editor" name="contenidoArticulo" cols="80" rows="10">
-              <?php echo isset($respuesta->contenido) ? $respuesta->contenido : ""; ?>  </textarea>
+              <textarea id="editor" name="contenidoArticulo" cols="80" rows="10"></textarea>
             </div>
           </div>
         </div>
@@ -63,7 +57,7 @@ include "views/includes/content-wrapper.php";
 
             <div class="form-group px-2">
               <label for="fechaArticulo">Fecha de publicación:</label>
-              <input type="text" class="form-control" name="fechaArticulo" value="<?php echo isset($respuesta->publicacion) ? $respuesta->publicacion : ""; ?>">
+              <input type="text" class="form-control" name="fechaArticulo" value="<?php echo $fechaActual = date('Y-m-d'); ?>">
             </div>
 
             <div class="form-group px-2">
@@ -78,14 +72,12 @@ include "views/includes/content-wrapper.php";
             </div>
 
             <div class="form-group px-2">
-              <img src="<?php echo RUTA_FRONTEND.$respuesta->imagen;?>" width="auto" height="200">
-
               <label for="imagenArticulo">Imagen:</label> <br>
               <input type="file" class="form-control-file" name="imagenArticulo" id="imagenArticulo" placeholder="Seleccione una imagen">
             </div>
 
             <div class="form-group px-2">
-              <button type="submit" name="actualizarArticulo" class="btn btn-primary w-100"><i class="fas fa-cog"></i>Actualizar Articulo</button>
+              <button type="submit" name="crearArticulo" class="btn btn-primary w-100"><i class="fas fa-cog"></i>Registrar Articulo</button>
             </div>
 
           </div>

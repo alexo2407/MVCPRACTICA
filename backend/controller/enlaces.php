@@ -17,6 +17,9 @@ class EnlaceController
         $respuesta = EnlaceModel::enlacesModel($link);
 
 
+        // var_dump($_GET["enlace"]);
+
+
         include $respuesta;
 
 

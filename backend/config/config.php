@@ -2,7 +2,9 @@
 
 //agregamos las rutas principales
 // define('RUTA_BACKEND','http://app.gestor.com/backend/');
-define('RUTA_FRONTEND','//'.$_SERVER['SERVER_NAME']);
+
+//obtenemos dinamicamente el dominio del servidor
+define('RUTA_FRONTEND','//'.$_SERVER['SERVER_NAME'].'/');
 define('RUTA_BACKEND', '//'.$_SERVER['SERVER_NAME'].'/backend/');
 
 

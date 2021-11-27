@@ -25,7 +25,6 @@
      <!-- daterange picker -->
      <link rel="stylesheet" href="<?= RUTA_BACKEND ?>views/plugins/daterangepicker/daterangepicker.css">
 
-  
   <!-- summernote -->
   <link rel="stylesheet" href="<?= RUTA_BACKEND ?>views/plugins/summernote/summernote-bs4.min.css">
 
@@ -64,9 +63,10 @@ $mvc->enlacesController();
 <script src="<?= RUTA_BACKEND ?>views/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 
-   <!-- Editor Summernote -->
-   <script src="<?= RUTA_BACKEND ?>views/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- Editor Summernote -->
+<script src="<?= RUTA_BACKEND?>views/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- InputMask -->
+
 <script src="<?= RUTA_BACKEND ?>views/plugins/moment/moment.min.js"></script>
 <script src="<?= RUTA_BACKEND ?>views/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->

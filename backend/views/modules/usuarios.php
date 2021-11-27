@@ -33,9 +33,8 @@ include "views/includes/content-wrapper.php";
                   <tbody>
                   <?php 
 
-                    $listarUsuarios = new UsurioController();
+                    $listarUsuarios = new UsuarioController();
                     $resultados = $listarUsuarios->obtenerusuariosController(); 
-
                     foreach($resultados as $usuario) :
                   
                   ?>

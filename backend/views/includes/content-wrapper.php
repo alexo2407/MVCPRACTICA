@@ -15,12 +15,13 @@
               // obtener el nombre del modulo
               $urlArray = explode('/', $_SERVER['REQUEST_URI']);
               # code...
-              switch ($urlArray[2]) {
+              switch ($urlArray[2]) 
+              {
                 case 'dashboard':
                   echo '<h1 class="m-0"> Dashboard </h1>';
                   break;
                 case 'articulos':
-                  echo '<h1 class="m-0"> Articulos </h1>';
+                  echo '<h1 class="m-0"> Listar Articulos </h1>';
                   break;
                 case 'crearArticulo':
                   echo '<h1 class="m-0"> Crear Articulo</h1>';
