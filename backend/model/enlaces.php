@@ -6,8 +6,14 @@ class EnlaceModel
     public static function enlacesModel($link)
     {
         if(
-            $link == "dashboard" ||
-            $link == "login"
+            $link == "dashboard"      ||
+            $link == "articulos"      ||
+            $link == "editarArticulo" ||
+            $link == "usuarios"       ||
+            $link == "editarUsuario"  ||
+            $link == "salir"          ||
+            $link == "login"           ||
+            $link == "registrar"         
         )
         {
             $modulo = "views/modules/".$link.".php";
@@ -18,7 +24,7 @@ class EnlaceModel
             $modulo = "views/modules/login.php";
         }
         else {
-            # code...
+            
             $modulo = "views/modules/login.php";
         }
 

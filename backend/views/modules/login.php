@@ -1,69 +1,58 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-		<!-- Tell the browser to be responsive to screen width -->
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
- 
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-		
-    <title>App Horas Extras</title>
-  </head>
+<?php 
+
+session_start();
+
+if(isset($_SESSION["validar"])){
+  header("location:dashboard");
+  exit();
+}
+
+
+
+?>
+
+
+
+
+
   <body class="hold-transition login-page">
 
   <div class="row">
     <div class="col-sm-12">
-        <?php if(isset($error)) : ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong><?php echo $error; ?></strong> 
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
+        <?php 
+        
+          //intanciamos el controlador del login 
+          $login = new UsurioController();
+          $login->loginController();
+        
+        ?>
+      </div>
+  </div>
 
 
 
   <div class="login-box">
   <div class="login-logo">
-    <img src="dist/img/login.png" class="img-fluid" width="200">
+    <img src="views/dist/img/login.png" class="img-fluid" width="200">
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingrese sus datos para iniciar sesión</p>
 
-      <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+      <form method="POST">
+
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Ingresa el email">
+          <input type="text" class="form-control" name="usuarioIngreso" placeholder="Ingrese el Nombre de Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
+
         <div class="input-group mb-3">
-          <input type="password" class="form-control" type="password" name="password" placeholder="Ingresa el password">
+          <input type="password" class="form-control" type="password" name="passwordIngreso" placeholder="Ingresa el password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -79,23 +68,10 @@
           <!-- /.col -->
         </div>
       </form>  
+      <a href="registrar" class="text-center">Registrate</a>
 
     </div>
     <!-- /.login-card-body -->
   </div>
 </div>
 <!-- /.login-box -->
-
-<!-- REQUIRED SCRIPTS -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- date-range-picker -->
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-
-</body>
-</html>
