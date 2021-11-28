@@ -1,5 +1,10 @@
 <?php 
 
+
+//helpers
+include_once "config/config.php";
+require_once "helpers/helpers.php";
+
 //modelos
 require_once "model/enlaces.php";
 require_once "model/usuario.php";

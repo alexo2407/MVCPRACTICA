@@ -1,8 +1,5 @@
 <?php 
 
-include_once "config/config.php";
-
-
 class Conexion
 {
     //paramétros de la BD
