@@ -94,7 +94,6 @@ include "views/includes/content-wrapper.php";
 
                         ?>
 
-<<<<<<< HEAD
                         <tr>
                             <td> <?php echo $articulos->id_articulo; ?></td>
                             <td><?php echo $articulos->titulo_articulo; ?></td>
@@ -103,20 +102,7 @@ include "views/includes/content-wrapper.php";
                             <td> 
                                 <a class="btn btn-primary" href="<?php echo RUTA_BACKEND;?>editarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Editar</a>
                                 <a class="btn btn-danger" href="<?=RUTA_BACKEND;?>borrarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Eliminar</a>
-                        </td>
-                        </tr>
-=======
-                            <tr>
-                                <td> <?php echo $articulos->id_articulo; ?></td>
-                                <td><?php echo $articulos->titulo_articulo; ?></td>
-                                <td> <img src="<?php echo RUTA_FRONTEND . $articulos->imagen_articulo; ?>" alt="" width="150" height="auto"></td>
-                                <td><?php echo textoCorto($articulos->contenido_articulo, 100); ?></td>
-                                <td>
-                                    <a class="btn btn-primary" href="<?php echo RUTA_BACKEND; ?>editarArticulo/<?php echo $articulos->id_articulo; ?>" role="button">Editar</a>
-                                    <a class="btn btn-danger" href="<?php echo RUTA_BACKEND; ?>borrarArticulo/<?php echo $articulos->id_articulo; ?>" role="button">Eliminar</a>
-                                </td>
-                            </tr>
->>>>>>> 8801d8f40bc503d1c0b28568f08e0b2c1739b383
+                        </td>   
                         <?php endforeach; ?>
                     </tbody>
                     <tfoot>

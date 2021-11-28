@@ -215,7 +215,6 @@ class ArticulosControllers
         // var_dump($idArticulo);
         if (isset($idArticulo)) 
         {
-<<<<<<< HEAD
             $respuesta = ArticulosModels::borrarArticulosModels($idArticulo, "articulo");
 
             if ($respuesta == "exitoso") 
@@ -229,31 +228,32 @@ class ArticulosControllers
             }
             else
             {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-=======
-            if ($idArticulo[2] == "borrarArticulo" &&  is_numeric($idArticulo[3])) {
-                $id = $idArticulo[3];
-    
-                $respuesta = ArticulosModels::borrarArticulosModels($id, "articulo");
-    
-                // var_dump($respuesta);
-    
-                if ($respuesta == "exitoso") {
-                    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
->>>>>>> 8801d8f40bc503d1c0b28568f08e0b2c1739b383
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>Exitoso</strong> Articulo Borrado
-              </div>';
-                } elseif ($respuesta == "error") {
-                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                // echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+
+                if ($idArticulo[2] == "borrarArticulo" &&  is_numeric($idArticulo[3])) {
+                    $id = $idArticulo[3];
+        
+                    $respuesta = ArticulosModels::borrarArticulosModels($id, "articulo");
+        
+                    // var_dump($respuesta);
+        
+                    if ($respuesta == "exitoso") {
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>Error</strong> No se pudo borrar el articulo
+                    <strong>Exitoso</strong> Articulo Borrado
                   </div>';
-                }
+                    } elseif ($respuesta == "error") {
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Error</strong> No se pudo borrar el articulo
+                      </div>';
+                    }
+                }    
+            
             }
         }
 
