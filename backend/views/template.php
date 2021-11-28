@@ -77,7 +77,7 @@ $mvc->enlacesController();
 
 <script src="<?= RUTA_BACKEND ?>views/js/init.js"></script>
 
-
+<script src="<?= RUTA_BACKEND ?>views/js/validarIngreso.js"></script>
 </body>
 
 </html>

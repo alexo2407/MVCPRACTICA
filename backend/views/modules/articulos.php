@@ -60,7 +60,7 @@ $eliminarArticulo->borrarArticuloController();
                             <td><?php echo $articulos->contenido_articulo; ?></td>
                             <td> 
                                 <a class="btn btn-primary" href="<?php echo RUTA_BACKEND;?>editarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Editar</a>
-                                <a class="btn btn-danger" href="<?php echo RUTA_BACKEND;?>borrarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Eliminar</a>
+                                <a class="btn btn-danger" href="<?=RUTA_BACKEND;?>borrarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Eliminar</a>
                         </td>
                         </tr>
                         <?php endforeach; ?>

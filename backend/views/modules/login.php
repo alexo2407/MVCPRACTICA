@@ -43,27 +43,31 @@ if(isset($_SESSION["validar"])){
       <form method="POST">
 
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="usuarioIngreso" placeholder="Ingrese el Nombre de Usuario">
+          <input type="text" class="form-control" name="usuarioIngreso" id="usuarioIngreso" placeholder="Ingrese el Nombre de Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
+          <div class="valid-feedback">Dato correcto</div>
+          <div class="invalid-feedback">Porfavor rellene el campo.</div>
         </div>
 
         <div class="input-group mb-3">
-          <input type="password" class="form-control" type="password" name="passwordIngreso" placeholder="Ingresa el password">
+          <input type="password" class="form-control" type="password" name="passwordIngreso" id="passwordIngreso" placeholder="Ingresa el password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          <div class="valid-feedback">Dato correcto</div>
+          <div class="invalid-feedback">Porfavor rellene el campo.</div>
         </div>
         <div class="row">
           
           <!-- /.col -->
           <div class="col-sm-12">
-            <button type="submit" name="ingresar" class="btn btn-primary d-block w-100"><i class="fas fa-user"></i> Ingresar</button>
+            <button type="submit" name="ingresar" id="login"  class="btn btn-primary d-block w-100"><i class="fas fa-user"></i> Ingresar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -78,3 +82,5 @@ if(isset($_SESSION["validar"])){
   </div>
 </div>
 <!-- /.login-box -->
+
+

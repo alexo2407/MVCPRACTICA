@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 class UsuarioController
@@ -8,67 +8,73 @@ class UsuarioController
      * ACCESO AL BACKEND
      */
     public function loginController()
-    {   
+    {
         //validamos que recibimos algo del formulario
-        if(isset($_POST["ingresar"]) && $_POST["usuarioIngreso"] != "")
+        if (isset($_POST["ingresar"]) && $_POST["usuarioIngreso"] != "") 
         {
-           $datosController = array(
-                                    "usuario" => $_POST["usuarioIngreso"],
-                                    "password"  => $_POST["passwordIngreso"]);
+             //validamos a traves de una expresion regular
 
-           $respuesta = UsuarioModel::loginModel($datosController,"usuario");
+            if (preg_match('/^[a-zA-Z0-9]*$/', $_POST["usuarioIngreso"]) && preg_match('/^[a-zA-Z0-9]*$/', $_POST["passwordIngreso"])) 
+            {
 
-        //    var_dump($repuesta);
 
-           if($respuesta == TRUE)
-           {
-            
-                if($respuesta->nick_user == $_POST["usuarioIngreso"] && $respuesta->password_usuario == $_POST["passwordIngreso"])
-                {
+                $datosController = array(
+                    "usuario" => $_POST["usuarioIngreso"],
+                    "password"  => $_POST["passwordIngreso"]
+                );
 
-                    session_start();
-                    $_SESSION['validar'] = true;
-                    $_SESSION['usuarioID'] = $respuesta->id_usuario;
-                    $_SESSION['usuarioNombre'] = $respuesta->nombre_usuario;
-                    $_SESSION['usuarioImagen'] = $respuesta->imagen_usuario;
+                $respuesta = UsuarioModel::loginModel($datosController, "usuario");
 
-                    header("location:".RUTA_BACKEND."dashboard");
+                //    var_dump($repuesta);
+
+                if ($respuesta == TRUE) {
+
+                    if ($respuesta->nick_user == $_POST["usuarioIngreso"] && password_verify($_POST["passwordIngreso"],$respuesta->password_usuario)) {
+
+                        session_start();
+                        $_SESSION['validar'] = true;
+                        $_SESSION['usuarioID'] = $respuesta->id_usuario;
+                        $_SESSION['usuarioNombre'] = $respuesta->nombre_usuario;
+                        $_SESSION['usuarioImagen'] = $respuesta->imagen_usuario;
+
+                        header("location:" . RUTA_BACKEND . "dashboard");
+                    } else {
+                        echo "Password Incorrecto";
+                    }
                 }
-                else
-                {
-                    echo "Password Incorrecto";
-                }
-
-
-
-           }
-
+            }
         }
     }
-    
+
 
     /**
      * ACCESO AL BACKEND
      */
     public function registroController()
-    {   
+    {
         //validamos que recibimos algo del formulario
-        if(isset($_POST["registrar"]))
+        if (isset($_POST["registrar"])) 
         {
-           $datosController = array("nickname" => $_POST["nickRegistro"],
-                                    "usuario" => $_POST["usuarioRegistro"],
-                                  "email" => $_POST["emailRegistro"],
-                                  "descripcion" => $_POST["descripcionRegistro"],
-                                   "password"  => $_POST["passwordRegistro"]);
+            if (preg_match('/^[a-zA-Z0-9]*$/', $_POST["nickRegistro"]) && preg_match('/^[a-zA-Z0-9]*$/', $_POST["passwordRegistro"]) && filter_var($_POST["emailRegistro"],FILTER_VALIDATE_EMAIL)) 
+            {
+                $encriptarPass = password_hash($_POST["passwordRegistro"],PASSWORD_DEFAULT,['cost' => 10]);
 
-           $repuesta = UsuarioModel::registroModel($datosController,"usuario");
-
-
-           if($repuesta == TRUE)
-           {           
-            header("location:".RUTA_BACKEND."login/$repuesta");  
-           }
-
+                $datosController = array(
+                    "nickname" => $_POST["nickRegistro"],
+                    "usuario" => $_POST["usuarioRegistro"],
+                    "email" => $_POST["emailRegistro"],
+                    "descripcion" => $_POST["descripcionRegistro"],
+                    "password"  => $encriptarPass
+                );
+    
+                $repuesta = UsuarioModel::registroModel($datosController, "usuario");
+    
+    
+                if ($repuesta == TRUE) {
+                    header("location:" . RUTA_BACKEND . "login/$repuesta");
+                }
+            }
+            
         }
     }
 
@@ -77,11 +83,9 @@ class UsuarioController
      * OBTENER LOS USUARIOS DEL BACKEND
      */
     public function obtenerusuariosController()
-    {   
-       $repuesta = UsuarioModel::obtenerusuarioModels("usuario");
+    {
+        $repuesta = UsuarioModel::obtenerusuarioModels("usuario");
 
-       return $repuesta;
+        return $repuesta;
     }
-
-
 }
