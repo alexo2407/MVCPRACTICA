@@ -1,7 +1,7 @@
 <?php 
 
 
-class UsurioController
+class UsuarioController
 {
 
     /**
@@ -10,26 +10,29 @@ class UsurioController
     public function loginController()
     {   
         //validamos que recibimos algo del formulario
-        if(isset($_POST["ingresar"]))
+        if(isset($_POST["ingresar"]) && $_POST["usuarioIngreso"] != "")
         {
-           $datosController = array("usuario" => $_POST["usuarioIngreso"], "password"  => $_POST["passwordIngreso"]);
+           $datosController = array(
+                                    "usuario" => $_POST["usuarioIngreso"],
+                                    "password"  => $_POST["passwordIngreso"]);
 
-           $repuesta = UsuarioModel::loginModel($datosController,"usuario");
+           $respuesta = UsuarioModel::loginModel($datosController,"usuario");
 
-           var_dump($repuesta);
+        //    var_dump($repuesta);
 
-           if($repuesta == TRUE)
+           if($respuesta == TRUE)
            {
             
-                if($repuesta->nick_user == $_POST["usuarioIngreso"] && $repuesta->password_usuario == $_POST["passwordIngreso"])
+                if($respuesta->nick_user == $_POST["usuarioIngreso"] && $respuesta->password_usuario == $_POST["passwordIngreso"])
                 {
 
+                    session_start();
                     $_SESSION['validar'] = true;
-                    $_SESSION['usuarioID'] = $repuesta->id_usuario;
-                    $_SESSION['usuarioNombre'] = $repuesta->nombre_usuario;
-                    $_SESSION['usuarioImagen'] = $repuesta->imagen_usuario;
+                    $_SESSION['usuarioID'] = $respuesta->id_usuario;
+                    $_SESSION['usuarioNombre'] = $respuesta->nombre_usuario;
+                    $_SESSION['usuarioImagen'] = $respuesta->imagen_usuario;
 
-                    header("location:dashboard");
+                    header("location:".RUTA_BACKEND."dashboard");
                 }
                 else
                 {
@@ -60,11 +63,10 @@ class UsurioController
 
            $repuesta = UsuarioModel::registroModel($datosController,"usuario");
 
-           var_dump($repuesta);
 
            if($repuesta == TRUE)
            {           
-
+            header("location:".RUTA_BACKEND."login/$repuesta");  
            }
 
         }

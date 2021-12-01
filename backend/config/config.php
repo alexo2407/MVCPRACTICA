@@ -1,8 +1,10 @@
 <?php 
 
 //agregamos las rutas principales
-define('RUTA_BACKEND','http://app.sanpayotour.com/backend/i');
-define('RURA_FRONTEND', 'http://app.sanpayotour.com');
+// define('RUTA_BACKEND','http://app.gestor.com/backend/');
+define('RUTA_FRONTEND','//'.$_SERVER['SERVER_NAME']);
+define('RUTA_BACKEND', '//'.$_SERVER['SERVER_NAME'].'/backend/');
+
 
 //definimos los parametros de conexión a la BD
 define('DB_HOST', 'localhost');

@@ -1,5 +1,5 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -7,6 +7,8 @@
           <div class="col-sm-6">
 
             <?php
+
+            // var_dump(RUTA_BACKEND);
 
             if (isset($_SERVER['REQUEST_URI'])) 
             {
@@ -24,7 +26,7 @@
                   echo '<h1 class="m-0"> Crear Articulo</h1>';
                   break;
                 case 'editarArticulo':
-                    echo '<h1 class="m-0">' . strtoupper($urlArray[2]) . '</h1>';
+                    echo '<h1 class="m-0"> Editar Articulo</h1>';
                     break;
                 default:
                   echo '<h1 class="m-0"> Desfault </h1>';

@@ -22,7 +22,7 @@ if(isset($_SESSION["validar"])){
         <?php 
         
           //intanciamos el controlador del login 
-          $login = new UsurioController();
+          $login = new UsuarioController();
           $login->loginController();
         
         ?>
@@ -67,8 +67,11 @@ if(isset($_SESSION["validar"])){
           </div>
           <!-- /.col -->
         </div>
+
       </form>  
-      <a href="registrar" class="text-center">Registrate</a>
+     <div class="form-group col-12">
+     <a href="registrar" class="text-center">Registrate</a>
+     </div>
 
     </div>
     <!-- /.login-card-body -->

@@ -18,7 +18,7 @@ if(isset($_SESSION["validar"])){
         <?php 
         
           //intanciamos el controlador del login 
-          $registrar = new UsurioController();
+          $registrar = new UsuarioController();
           $registrar->registroController();
         
         ?>
@@ -72,7 +72,8 @@ if(isset($_SESSION["validar"])){
 
         <div class="input-group mb-3">
           <label for="">Descripcion del usuario</label>
-          <textarea name="descripcionRegistro" id="" cols="40" rows="5"></textarea>
+          <textarea name="descripcionRegistro" id="editor">
+          </textarea>
         </div>
         <div class="row">
           

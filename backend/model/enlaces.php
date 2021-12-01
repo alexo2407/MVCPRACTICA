@@ -5,21 +5,21 @@ class EnlaceModel
 
     public static function enlacesModel($link)
     {
-        if(
-            $link == "dashboard"      ||
-            $link == "articulos"      ||
-            $link == "editarArticulo" ||
-            $link == "usuarios"       ||
-            $link == "editarUsuario"  ||
-            $link == "salir"          ||
-            $link == "login"           ||
-            $link == "registrar"         
-        )
+        $rutas = explode("/", $link);
+        
+        if( $rutas[0] == "dashboard"      ||
+            $rutas[0] == "articulos"      ||
+            $rutas[0] == "editarArticulo" ||
+            $rutas[0] == "usuarios"       ||
+            $rutas[0] == "editarUsuario"  ||
+            $rutas[0] == "salir"          ||
+            $rutas[0] == "login"           ||
+            $rutas[0] == "registrar")
         {
-            $modulo = "views/modules/".$link.".php";
+            $modulo = "views/modules/".$rutas[0].".php";
 
         }
-        elseif( $link == "index")
+        elseif( $rutas[0] == "index")
         {
             $modulo = "views/modules/login.php";
         }

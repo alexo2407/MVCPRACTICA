@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function ()  {
     $('#listarUsuarios').DataTable({
         responsive: true,
         lengthChange: false,
@@ -10,4 +10,7 @@ $(function () {
         buttons: ["copy", "csv", "excel", "pdf", "print"],
 
     });
+
+    $('#editor').summernote();
+    
   });
