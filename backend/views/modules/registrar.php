@@ -29,7 +29,7 @@ if(isset($_SESSION["validar"])){
 
 <div class="register-box">
   <div class="register-logo">
-    <a href="registrar"><b>Regsitro de </b>usuarios</a>
+    <a href="<?= RUTA_BACKEND ?>"><b>Regsitro de </b>usuarios</a>
   </div>
 
   <div class="card">
@@ -72,7 +72,7 @@ if(isset($_SESSION["validar"])){
 
         <div class="input-group mb-3">
           <label for="">Descripcion del usuario</label>
-          <textarea name="descripcionRegistro" id="editor">
+          <textarea id="editor" name="descripcionRegistro" >
           </textarea>
         </div>
         <div class="row">
@@ -89,3 +89,4 @@ if(isset($_SESSION["validar"])){
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
+
