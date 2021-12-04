@@ -204,6 +204,16 @@ img {
   z-index: 100;
 }
 
+.hero-internas {
+   height: 300px;
+  background-size: cover;
+}
+
+.container-interna {
+  max-width: 1110px;
+  margin: 0 auto;;
+}
+
 /* menu */
 
 /* nav {
@@ -457,11 +467,15 @@ form input[type="submit"]:hover {
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   padding-bottom: 2rem;
   margin-bottom: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .card img {
   width: 100%;
-  height: 50%;
+  height: 300px;
   object-fit: cover;
   object-position: left center;
 }
@@ -475,7 +489,10 @@ form input[type="submit"]:hover {
 .info {
   padding-left: 1rem;
   padding-bottom: 2rem;
-  margin: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .info .categoria {
@@ -484,16 +501,25 @@ form input[type="submit"]:hover {
   font-weight: bold;
 }
 
-.deporte {
+.Deportes {
   color: var(--color-fuente-claro);
 }
 
-.juegos {
+.Juegos {
   color: var(--color-secundario);
 }
-.eventos {
+.Eventos {
   color: var(--color-fuente-secundaria);
 }
+
+.Noticias {
+  color: var(--color-fuente-secundaria);
+}
+
+.Turismo {
+  color: var(--color-secundario);
+}
+
 
 .info .titulo {
   font-size: 2rem;
@@ -501,8 +527,24 @@ form input[type="submit"]:hover {
   color: var(--color-fuente-grande);
 }
 
+
 .info .precio {
+  text-align: justify;
+  font-size: 0.9rem !important;
+  line-height: 2rem !important;
   color: var(--color-fuente-principla);
+  padding: 1rem;
+}
+
+@media (min-width: 560px) {
+
+  .info .precio {
+    text-align: justify;
+    font-size: 1.2rem !important;
+    line-height: 2rem !important;
+    color: var(--color-fuente-principla);
+    padding: 1rem;
+  }
 }
 
 .info .precio span {
@@ -542,6 +584,7 @@ form input[type="submit"]:hover {
   justify-content: center;
   padding: 1rem;
 }
+/* botones */
 
 .boton {
     background: var(--color-primario);
@@ -560,6 +603,27 @@ form input[type="submit"]:hover {
     background: #e78103;
     cursor: pointer;
     transition: all 0.5s ease;
+}
+
+
+.btn {
+  display: inline-block ;
+  background: var(--color-primario);
+  color: var(--color-blancos);
+  width: calc(100% - 5rem);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  align-self: center;
+  text-decoration: none;
+  /* margin-top: 2rem; */
+}
+
+.btn:hover {
+  background: #e78103;
+  cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .especial .info h3 {
