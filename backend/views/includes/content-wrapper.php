@@ -7,38 +7,8 @@
           <div class="col-sm-6">
 
             <?php
-
-            // var_dump(RUTA_BACKEND);
-
-            if (isset($_SERVER['REQUEST_URI'])) 
-            {
-              // obtener el nombre del modulo
-              $urlArray = explode('/', $_SERVER['REQUEST_URI']);
-              # code...
-              switch ($urlArray[2]) 
-              {
-                case 'dashboard':
-                  echo '<h1 class="m-0"> Dashboard </h1>';
-                  break;
-                case 'articulos':
-                  echo '<h1 class="m-0"> Listar Articulos </h1>';
-                  break;
-                case 'crearArticulo':
-                  echo '<h1 class="m-0"> Crear Articulo</h1>';
-                  break;
-                case 'editarArticulo':
-                    echo '<h1 class="m-0"> Editar Articulo</h1>';
-                    break;
-                default:
-                  echo '<h1 class="m-0"> Desfault </h1>';
-                  break;
-              }
-            } else {
-              echo '<h1 class="m-0">Mi sitio WEB</h1>';
-            }
-
-
-
+              ///mostramos el nombre de los articulos con el helper
+                mostrarNombreModulo();
             ?>
 
           </div><!-- /.col -->

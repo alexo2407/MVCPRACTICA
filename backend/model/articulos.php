@@ -94,11 +94,17 @@ class ArticulosModels
         //ejecutamos la consulta
 
 
-        $stmt->execute();
+        if ($stmt->execute()) 
+        {
+            $articulo = $stmt->fetch(PDO::FETCH_OBJ);
+            return $articulo;
+        }
+        else
+        {
+            return "noencontrado";
+        }
 
-        $articulo = $stmt->fetch(PDO::FETCH_OBJ);
-
-        return $articulo;
+        
 
 
         $stmt = null;
@@ -177,11 +183,13 @@ class ArticulosModels
 
         if ($stmt->execute()) {
 
-            return "exitoso";
-            # code...
-        } else {
-            return "error";
-        }
+            if ($stmt->rowCount() > 0) {
+                return "exitoso";
+            }
+            else{
+                return "error";
+            }
+        } 
 
 
         $stmt = null;

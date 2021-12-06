@@ -19,8 +19,7 @@ include "views/includes/content-wrapper.php";
 <div class="content">
   <div class="row">
     <div class="col-12">
-      <?php 
-      
+      <?php       
       //creamos el controlador para crear articulos
 
       $crearArticulo = new ArticulosControllers();
@@ -47,7 +46,7 @@ include "views/includes/content-wrapper.php";
             </div>
             <div class="form-group px-2">
               <label for="contenidoArticulo">Contenido de la publicación:</label> <br>
-              <textarea id="editor" name="contenidoArticulo" cols="80" rows="10"></textarea>
+              <textarea id="editor" name="contenidoArticulo"></textarea>
             </div>
           </div>
         </div>
@@ -57,7 +56,7 @@ include "views/includes/content-wrapper.php";
 
             <div class="form-group px-2">
               <label for="fechaArticulo">Fecha de publicación:</label>
-              <input type="text" class="form-control" name="fechaArticulo" value="<?php echo $fechaActual = date('Y-m-d'); ?>">
+              <input type="text" class="form-control" name="fechaArticulo" value="<?php echo $fechaActual = date('Y-m-d'); ?>" id="datepicker">
             </div>
 
             <div class="form-group px-2">

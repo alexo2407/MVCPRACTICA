@@ -99,19 +99,19 @@ class ArticulosControllers
 
         // var_dump($idArticulo[3]);
 
-        if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) 
-        {
+        if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) {
             $id = $idArticulo[3];
             $respuesta = ArticulosModels::editarArticulosModels($id, "articulo");
 
-            return $respuesta;
+            if ($respuesta == true) {
+                return $respuesta;
+            } else {
+                header("location:" . RUTA_BACKEND . "articulos/noencontrado");
+            }
+        } elseif (isset($idArticulo[3]) == "") {
+            header("location:" . RUTA_BACKEND . "articulos/vacio");
         } else {
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Errror</strong> Id no encontrado
-          </div>';
+            header("location:" . RUTA_BACKEND . "articulos");
         }
     }
 
@@ -152,7 +152,7 @@ class ArticulosControllers
                     $respuesta = ArticulosModels::actualizarArticulosModels($datosController, "articulo");
 
                     if ($respuesta[0] == "exitoso") {
-                        header("location:".RUTA_BACKEND."editarArticulo/$respuesta[1]/ok");
+                        header("location:" . RUTA_BACKEND . "editarArticulo/$respuesta[1]/ok");
                     } else {
                         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -162,21 +162,16 @@ class ArticulosControllers
                           </div>';
                     }
                 }
-            }
-            else 
-            {
+            } else {
                 //validamos que no vengan vacios
-                if ($datosController["titulo"] == "" || $datosController["contenido"] == "") 
-                {
+                if ($datosController["titulo"] == "" || $datosController["contenido"] == "") {
                     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                         <strong>Errror</strong> Campo titulo o contenido estan vacios 
                     </div>';
-                } 
-                else 
-                {
+                } else {
 
                     //guardamos la imagen
                     $imagen = $_FILES["imagenArticulo"]["name"];
@@ -195,9 +190,8 @@ class ArticulosControllers
 
                     $respuesta = ArticulosModels::actualizarArticulosModels($datosController, "articulo");
 
-                    if ($respuesta[0] == "exitoso") 
-                    {
-                        header("location:".RUTA_BACKEND."editarArticulo/$respuesta[1]/ok");
+                    if ($respuesta[0] == "exitoso") {
+                        header("location:" . RUTA_BACKEND . "editarArticulo/$respuesta[1]/ok");
                     } else {
                         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -211,7 +205,7 @@ class ArticulosControllers
         }
     }
 
-     /**
+    /**
      * METODO PARA BORRAR ARTICULO
      */
     public function borrarArticuloController()
@@ -219,33 +213,33 @@ class ArticulosControllers
         $idArticulo = explode("/", $_SERVER["REQUEST_URI"]);
 
         // var_dump($idArticulo);
-
-        if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) 
+        if (isset($idArticulo)) 
         {
-            $id = $idArticulo[3];
-
-            $respuesta = ArticulosModels::borrarArticulosModels($id, "articulo");
-
-            if ($respuesta == "exitoso") {
-                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Exitoso</strong> Articulo Borrado
-          </div>';
-            }
-            else
-            {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            if ($idArticulo[2] == "borrarArticulo" &&  is_numeric($idArticulo[3])) {
+                $id = $idArticulo[3];
+    
+                $respuesta = ArticulosModels::borrarArticulosModels($id, "articulo");
+    
+                // var_dump($respuesta);
+    
+                if ($respuesta == "exitoso") {
+                    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <strong>Error</strong> No se pudo borrar el articulo
+                <strong>Exitoso</strong> Articulo Borrado
               </div>';
+                } elseif ($respuesta == "error") {
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Error</strong> No se pudo borrar el articulo
+                  </div>';
+                }
             }
-
-
-            
         }
+
+        
     }
 }
