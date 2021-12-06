@@ -33,7 +33,7 @@ class GestorArticulosModels
         $dataBase = new Conexion();
         $db = $dataBase->conectar();
 
-        $stmt = $db->prepare("SELECT a.id_articulo AS idArticulo, a.fk_categoria AS idCategoria, a.titulo_articulo AS titulo, a.contenido_articulo AS contenido, a.imagen_articulo AS imagen, a.date_create_articulo AS publicacion, c.nombre_categoria AS categoria FROM $tabla AS a INNER JOIN categoria AS c ON a.fk_categoria = c.id_categoria WHERE a.id_articulo = :id");
+        $stmt = $db->prepare("SELECT a.id_articulo AS idArticulo, a.fk_categoria AS idCategoria, a.titulo_articulo AS titulo, a.contenido_articulo AS contenido, a.imagen_articulo AS imagen, a.fecha_publicacion AS publicacion, c.nombre_categoria AS categoria FROM $tabla AS a INNER JOIN categoria AS c ON a.fk_categoria = c.id_categoria WHERE a.id_articulo = :id");
         
         $stmt->bindParam(":id",$idArticulo,PDO::PARAM_INT);
 

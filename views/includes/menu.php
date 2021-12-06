@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="logo nav-logo">
-        <img src="views/assets/logo.svg" alt="Logo san Payo tour operadora">
+        <img src="<?=RUTA_FRONTEND?>views/assets/logo.svg" alt="Logo san Payo tour operadora">
     </div>
     <ul class="nav-menu">
         <li class="nav-item">

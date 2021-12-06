@@ -2,6 +2,7 @@
 
 
 //helpers
+include_once "config/config.php";
 require_once "helpers/helpers.php";
 
 //modelos

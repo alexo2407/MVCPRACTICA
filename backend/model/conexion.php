@@ -1,7 +1,5 @@
 <?php 
 
-include_once "backend/config/config.php";
-
 class Conexion
 {
     //paramétros de la BD

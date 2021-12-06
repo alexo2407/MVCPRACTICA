@@ -23,40 +23,48 @@ $repuestaArticulos = $leerArticulosFront->leerFrontArticulosController();
                 <div class="info">
                     <h6 class="categoria '.$articulo->categoria.'">'.$articulo->categoria.'</h6>
                     <h3 class="titulo">'.$articulo->titulo.'</h3>
-                    <p class="precio">'.$articulo->contenido.' </p>
+                    <p class="precio">'.textoCorto($articulo->contenido,90).' </p>
+                    <a class="btn" href="'.RUTA_FRONTEND.'detalleArticulos/'.$articulo->id.'" role="button">Leer más</a>
+
                 </div>
             </article>';
                 break;
-                case 'Turismo':
+            case 'Turismo':
                     echo '   <article class="card">
                     <img src="'.$articulo->imagen.'" alt="">
                     <div class="info">
                         <h6 class="categoria '.$articulo->categoria.'">'.$articulo->categoria.'</h6>
                         <h3 class="titulo">'.$articulo->titulo.'</h3>
-                        <p class="precio">'.$articulo->contenido.' </p>
+                        <p class="precio">'.textoCorto($articulo->contenido,90).' </p>
+                        <a class="btn" href="'.RUTA_FRONTEND.'detalleArticulos/'.$articulo->id.'" role="button">Leer más</a>
+
                     </div>
                 </article>';
-                    break;
-                case 'Deportes':
+                break;
+            case 'Deportes':
                     echo '   <article class="card">
                     <img src="'.$articulo->imagen.'" alt="">
                     <div class="info">
                         <h6 class="categoria '.$articulo->categoria.'">'.$articulo->categoria.'</h6>
                         <h3 class="titulo">'.$articulo->titulo.'</h3>
-                        <p class="precio">'.$articulo->contenido.' </p>
+                        <p class="precio">'.textoCorto($articulo->contenido,90).' </p>
+                        <a class="btn" href="'.RUTA_FRONTEND.'detalleArticulos/'.$articulo->id.'" role="button">Leer más</a>
+
                     </div>
                 </article>';
                         break;
-                case 'Juegos':
+            case 'Juegos':
                     echo '   <article class="card">
                     <img src="'.$articulo->imagen.'" alt="">
                     <div class="info">
                         <h6 class="categoria '.$articulo->categoria.'">'.$articulo->categoria.'</h6>
                         <h3 class="titulo">'.$articulo->titulo.'</h3>
-                        <p class="precio">'.$articulo->contenido.' </p>
+                        <p class="precio">'.textoCorto($articulo->contenido,90).' </p>
+                        <a class="btn" href="'.RUTA_FRONTEND.'detalleArticulos/'.$articulo->id.'" role="button">Leer más</a>
+
                     </div>
-                </article>';
-                     break;
+            </article>';
+                break;
                         
                       
             default:
@@ -69,7 +77,6 @@ $repuestaArticulos = $leerArticulosFront->leerFrontArticulosController();
         ?>
      
 
-        
        
     </div> <!-- div para card-->
 </section>
