@@ -24,6 +24,27 @@ class ArticulosModels
         $stmt = null;
     }
 
+
+    public static function leerCategoriasModels($tabla)
+    {
+        //Instanicamos la base de datos
+        $database = new Conexion();
+        $db = $database->conectar();
+
+        //preparamos la consulta
+        $stmt = $db->prepare("SELECT id_categoria, nombre_categoria FROM $tabla");
+
+        //ejecutamos la consulta
+
+        $stmt->execute();
+
+        $categorias = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $categorias;
+
+        $stmt = null;
+    }
+
     public static function crearArticulosModels($datosModels, $tabla)
     {
         //Instanicamos la base de datos

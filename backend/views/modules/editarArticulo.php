@@ -27,12 +27,37 @@ include "views/includes/content-wrapper.php";
       $respuesta = $editarArticulo->editarArticulosControllers();
       $actualuzarArticulo = new ArticulosControllers();
       $actualuzarArticulo->actualizarArticulosControllers();
+
+       if (isset($_GET['enlace'])) 
+       {
+         //lo guardamos en un arreglo
+          $mensaje = explode("/",$_GET['enlace']);
+
+          // var_dump($mensaje);
+          if (isset($mensaje[2]) == "ok") 
+          {
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Exitoso</strong> Articulo actualizado correctamente
+          </div>';
+          }
+          elseif(isset($mensaje[2])  == "error"){
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Error</strong> Articulo no se pudo actualizar
+          </div>';
+          }
+
+       }
       
       ?>
     </div>
   </div>
 </div>
-
 
 
 <!-- Main content -->
@@ -70,10 +95,27 @@ include "views/includes/content-wrapper.php";
               <label for="categoriaArticulo">categorias:</label> <br>
               
               <select class="form-control" name="categoriaArticulo">
-                <option value="1">Noticias</option>
-                <option value="2">Turismo</option>
-                <option value="3">Deportes</option>
-                <option value="4">Juegos</option>
+                <option value="0" >Seleccione una categoria</option>
+                <?php 
+                
+                 $listarCategorias = new ArticulosControllers();
+                 $respuestaCategorias = $listarCategorias->leerCategorias();
+
+                 foreach ($respuestaCategorias as $categoria) :
+
+                  if ($respuesta->idCategoria == $categoria->id_categoria) 
+                  {    
+                   ?>
+                    <option value="<?=$respuesta->idCategoria?>" selected><?php echo $respuesta->categoria; ?></option>
+                  <?php 
+                } else 
+                { 
+                  ?>
+                    <option value="<?= $categoria->id_categoria?>"><?php echo $categoria->nombre_categoria; ?></option>
+                <?php 
+                }
+                endforeach; 
+                ?>
               </select>
             </div>
 

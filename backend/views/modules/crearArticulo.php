@@ -64,10 +64,16 @@ include "views/includes/content-wrapper.php";
               <label for="categoriaArticulo">categorias:</label> <br>
               
               <select class="form-control" name="categoriaArticulo">
-                <option value="1">Noticias</option>
-                <option value="2">Turismo</option>
-                <option value="3">Deportes</option>
-                <option value="4">Juegos</option>
+                <option value="0" selected>Seleccione una categoria</option>
+                <?php 
+                
+                 $listarCategorias = new ArticulosControllers();
+                 $respuestaCategorias = $listarCategorias->leerCategorias();
+
+                 foreach($respuestaCategorias as $categorias) :
+                ?>
+                <option value="<?=$categorias->id_categoria ?>"><?=$categorias->nombre_categoria?></option>
+                <?php endforeach; ?>
               </select>
             </div>
 

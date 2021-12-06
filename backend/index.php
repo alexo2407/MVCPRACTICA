@@ -1,5 +1,9 @@
 <?php 
 
+
+//helpers
+require_once "helpers/helpers.php";
+
 //modelos
 require_once "model/enlaces.php";
 require_once "model/usuario.php";

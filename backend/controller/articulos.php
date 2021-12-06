@@ -12,6 +12,16 @@ class ArticulosControllers
 
         return $respuesta;
     }
+
+    /**
+     * METODO PARA LISTAR TODOS LAS CATEGORIAS
+     */
+    public function leerCategorias()
+    {
+        $respuesta = ArticulosModels::leerCategoriasModels("categoria");
+
+        return $respuesta;
+    }
     /**
      * METODO PARA CREAR ARTICULOS
      */
@@ -74,13 +84,6 @@ class ArticulosControllers
                     }
                 }
             }
-        } else {
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Errror</strong> Ningun dato ha sido enviado 
-          </div>';
         }
     }
 
@@ -96,8 +99,10 @@ class ArticulosControllers
 
         // var_dump($idArticulo[3]);
 
-        if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) {
-            $respuesta = ArticulosModels::editarArticulosModels($idArticulo, "articulo");
+        if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) 
+        {
+            $id = $idArticulo[3];
+            $respuesta = ArticulosModels::editarArticulosModels($id, "articulo");
 
             return $respuesta;
         } else {
@@ -160,22 +165,24 @@ class ArticulosControllers
             }
             else 
             {
-
-
                 //validamos que no vengan vacios
-                if ($datosController["titulo"] == "" || $datosController["contenido"] == "") {
+                if ($datosController["titulo"] == "" || $datosController["contenido"] == "") 
+                {
                     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                         <strong>Errror</strong> Campo titulo o contenido estan vacios 
                     </div>';
-                } else {
+                } 
+                else 
+                {
 
                     //guardamos la imagen
                     $imagen = $_FILES["imagenArticulo"]["name"];
 
                     $imagenArray = explode(".", $imagen);
+
                     $aleatorio = rand(1000, 9999);
                     $nuevoNombreImagen = $imagenArray[0] . $aleatorio . '.' . $imagenArray[1];
                     $rutaAGuardar = "../views/assets/galeria/" . $nuevoNombreImagen;
@@ -188,8 +195,9 @@ class ArticulosControllers
 
                     $respuesta = ArticulosModels::actualizarArticulosModels($datosController, "articulo");
 
-                    if ($respuesta[0] == "exitoso") {
-                        header("location:".RUTA_BACKEND."articulos/$respuesta[1]/ok");
+                    if ($respuesta[0] == "exitoso") 
+                    {
+                        header("location:".RUTA_BACKEND."editarArticulo/$respuesta[1]/ok");
                     } else {
                         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -203,7 +211,6 @@ class ArticulosControllers
         }
     }
 
-
      /**
      * METODO PARA BORRAR ARTICULO
      */
@@ -215,7 +222,9 @@ class ArticulosControllers
 
         if (isset($idArticulo[3]) && is_numeric($idArticulo[3])) 
         {
-            $respuesta = ArticulosModels::borrarArticulosModels($idArticulo, "articulo");
+            $id = $idArticulo[3];
+
+            $respuesta = ArticulosModels::borrarArticulosModels($id, "articulo");
 
             if ($respuesta == "exitoso") {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -237,13 +246,6 @@ class ArticulosControllers
 
 
             
-        } else {
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Errror</strong> Id no encontrado
-          </div>';
         }
     }
 }

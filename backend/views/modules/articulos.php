@@ -15,12 +15,18 @@ include "views/includes/content-wrapper.php";
 ?>
 
 
-<?php 
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <?php 
 
-$eliminarArticulo = new ArticulosControllers();
-$eliminarArticulo->borrarArticuloController();
+    $eliminarArticulo = new ArticulosControllers();
+    $eliminarArticulo->borrarArticuloController();
 
-?>
+    ?>
+        </div>
+    </div>
+</div>
 
 <!-- Main content -->
 <div class="content">
@@ -57,7 +63,7 @@ $eliminarArticulo->borrarArticuloController();
                             <td> <?php echo $articulos->id_articulo; ?></td>
                             <td><?php echo $articulos->titulo_articulo; ?></td>
                             <td> <img src="<?php echo RUTA_FRONTEND.$articulos->imagen_articulo; ?>" alt="" width="150" height="auto"></td>
-                            <td><?php echo $articulos->contenido_articulo; ?></td>
+                            <td><?php echo textoCorto($articulos->contenido_articulo,100); ?></td>
                             <td> 
                                 <a class="btn btn-primary" href="<?php echo RUTA_BACKEND;?>editarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Editar</a>
                                 <a class="btn btn-danger" href="<?php echo RUTA_BACKEND;?>borrarArticulo/<?php echo $articulos->id_articulo;?>" role="button">Eliminar</a>
