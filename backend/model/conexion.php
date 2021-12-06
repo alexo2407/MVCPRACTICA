@@ -1,7 +1,6 @@
 <?php 
 
-include_once "config/config.php";
-
+include_once "backend/config/config.php";
 
 class Conexion
 {

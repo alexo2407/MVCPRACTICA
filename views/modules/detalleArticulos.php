@@ -1,0 +1,1 @@
+<h1> Estamos en el detalle del articulo</h1>

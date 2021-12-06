@@ -1,0 +1,9 @@
+
+Options All -Indexes
+Options -MultiViews
+
+#url amigables
+
+RewriteEngine On
+
+RewriteRule ^([-_a-zA-Z0-9/]+)$ index.php?enlacefront=$1 [QSA]
